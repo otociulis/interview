@@ -45,7 +45,7 @@ bool intersectionLine(const Plane& a, const Plane& b, Vector3D& p1, Vector3D& p2
 	const auto det = cn.length() * cn.length();
 
 	// If determinant is 0 planes are parallel (or identical)
-	if (det < std::numeric_limits<double>::epsilon()) {
+	if (det <= std::numeric_limits<double>::epsilon()) {
 		return false;
 	}
 
