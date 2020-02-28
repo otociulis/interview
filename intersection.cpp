@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
 	Vector3D p1, p2;
 
 	if (!intersectionLine(a, b, p1, p2)) {
-		std::cout << "Lines are not intersecting";
+		std::cout << "Planes are not intersecting";
 	}
 	else {
 		std::cout << p1 << std::endl;
