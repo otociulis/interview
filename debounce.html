@@ -1,0 +1,30 @@
+<html>
+<head>
+    <script>
+        function makeRequest(payload) {
+            console.log({
+                data: payload,
+                time: new Date().getTime()
+            });
+        }
+
+        let running;
+        function eventHandlerWithThrottling() {
+            if (typeof running === 'undefined') {
+                window.setTimeout(() => {
+                    // Create a promise so we can reset the flag and process next request
+                    new Promise(() => {
+                        makeRequest(running);
+                    })
+                    running = undefined;
+                }, 5000);
+            }
+
+            running = { enqueuedAt: new Date().getTime() };
+        }
+    </script>
+</head>
+<body>
+    <button onclick="eventHandlerWithThrottling()">Test</button>
+</body>
+</html>
